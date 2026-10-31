@@ -8,6 +8,7 @@ body
 display: flex;
 justify-content: center;
 background-color: lightgrey;
+
 }
 button
 {
@@ -30,16 +31,32 @@ left: 2px;
 }
 button
 {
+border-radius: 6px;
+border: 0px;
+height: 30px;
+font-size: 20px;
+}
+button:hover
+{
+background-color: darkgrey;
 }
 input
 {
 width: 90%;
 margin-top: 20px;
+border-radius: 6px;
+border: 0px;
+height: 30px;
+font-family: Arial;
+font-size: 20px;
 }
 .obudowa
 {
+margin-top:20px;
 display: block;
 background-color: grey;
+padding: 20px;
+border-radius: 4px;
 }
 </style>
 </head>
@@ -47,7 +64,7 @@ background-color: grey;
 <body>
 <div class="obudowa">
 <div class="container">
-<input type="text", id="ekran">
+<input type="text", id="ekran" readonly>
 
 <br>
 <div class="znaki">
@@ -80,7 +97,8 @@ var wynik = 0;
 var dzialanie=0;
 function wpiszNaEkran(liczba)
 {
-	liczbaNaEkranie.value += liczba;
+	if(liczbaNaEkranie.value==0) liczbaNaEkranie.value = liczba;
+	else liczbaNaEkranie.value += liczba;
 }
 function wybierzDzialanie(x)
 {
@@ -141,9 +159,9 @@ function wypiszWynik()
 }
 function wyczysc()
 {
-    var pierwszaLiczba = 0;
-    var wynik = 0;
-    var dzialanie=0;
+    pierwszaLiczba = 0;
+    wynik = 0;
+    dzialanie=0;
     liczbaNaEkranie.value = "";
 }
 </script>
