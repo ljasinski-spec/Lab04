@@ -16,15 +16,17 @@ width: 50px;
 {
 display: flex;
 flex-direction: column;
-}
-.cyfry
-{
-flex:1;
-width: 40%;
+align-items: center;
 }
 .znaki
 {
-flex:1;
+display: flex;
+flex-wrap: wrap;
+width: 220px;
+gap: 5px;
+}
+button
+{
 }
 </style>
 </head>
@@ -32,22 +34,27 @@ flex:1;
 <body>
 <div class="container">
 <input type="text", id="ekran">
-<div class="znaki">
-<button onclick="dodaj()">+</button>
-<button onclick="odejmij()">-</button>
-<button onclick="wypiszWynik()">=</button>
-</div>
+
 <br>
-<div class="cyfry">
+<div class="znaki">
 <button onclick="wpiszNaEkran(1)">1</button>
 <button onclick="wpiszNaEkran(2)">2</button>
 <button onclick="wpiszNaEkran(3)">3</button>
+<button onclick="dodaj()">+</button>
 <button onclick="wpiszNaEkran(4)">4</button>
 <button onclick="wpiszNaEkran(5)">5</button>
 <button onclick="wpiszNaEkran(6)">6</button>
+<button onclick="odejmij()">-</button>
 <button onclick="wpiszNaEkran(7)">7</button>
 <button onclick="wpiszNaEkran(8)">8</button>
 <button onclick="wpiszNaEkran(9)">9</button>
+<button onclick="mnozenie()">*</button>
+<button onclick="wyczysc()">C</button>
+<button onclick="wpiszNaEkran(0)">0</button>
+<button onclick="wypiszWynik()">=</button>
+<button onclick="dzielenie()">/</button>
+
+
 </div>
 </div>
 </body>
@@ -72,9 +79,25 @@ function odejmij()
     liczbaNaEkranie.value="";
     dzialanie=2;
 }
+function mnozenie()
+{
+	pierwszaLiczba=Number(liczbaNaEkranie.value);
+    liczbaNaEkranie.value="";
+   	dzialanie=3;
+}
+function dzielenie()
+{
+	pierwszaLiczba=Number(liczbaNaEkranie.value);
+    liczbaNaEkranie.value="";
+   	dzialanie=4;
+}
 function wypiszWynik()
 {
 	drugaLiczba=Number(liczbaNaEkranie.value);
+    if(dzialanie==0)
+    {
+    liczbaNaEkranie.value="";
+    }
     if(dzialanie==1)
     {
     var wynik = pierwszaLiczba+drugaLiczba;
@@ -85,7 +108,24 @@ function wypiszWynik()
     var wynik = pierwszaLiczba-drugaLiczba;
     liczbaNaEkranie.value=wynik;
     }
+    if(dzialanie==3)
+    {
+    var wynik = pierwszaLiczba*drugaLiczba;
+    liczbaNaEkranie.value=wynik;
+    }
+    if(dzialanie==4)
+    {
+    var wynik = pierwszaLiczba/drugaLiczba;
+    liczbaNaEkranie.value=wynik;
+    }
     pierwszaLiczba=wynik;
+}
+function wyczysc()
+{
+    liczbaNaEkranie.value="";
+    pierwszaLiczba=0;
+    drugaLiczba=0;
+    dzialanie=0;
 }
 </script>
 </html>
