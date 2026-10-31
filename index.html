@@ -40,19 +40,19 @@ button
 <button onclick="wpiszNaEkran(1)">1</button>
 <button onclick="wpiszNaEkran(2)">2</button>
 <button onclick="wpiszNaEkran(3)">3</button>
-<button onclick="dodaj()">+</button>
+<button onclick="wybierzDzialanie(1)">+</button>
 <button onclick="wpiszNaEkran(4)">4</button>
 <button onclick="wpiszNaEkran(5)">5</button>
 <button onclick="wpiszNaEkran(6)">6</button>
-<button onclick="odejmij()">-</button>
+<button onclick="wybierzDzialanie(2)">-</button>
 <button onclick="wpiszNaEkran(7)">7</button>
 <button onclick="wpiszNaEkran(8)">8</button>
 <button onclick="wpiszNaEkran(9)">9</button>
-<button onclick="mnozenie()">*</button>
+<button onclick="wybierzDzialanie(3)">*</button>
 <button onclick="wyczysc()">C</button>
 <button onclick="wpiszNaEkran(0)">0</button>
 <button onclick="wypiszWynik()">=</button>
-<button onclick="dzielenie()">/</button>
+<button onclick="wybierzDzialanie(4)">/</button>
 
 
 </div>
@@ -60,72 +60,76 @@ button
 </body>
 <script>
 var liczbaNaEkranie = document.getElementById("ekran");
-var pierwszaLiczba;
-var drugaLiczba;
-var dzialanie;
+var pierwszaLiczba = 0;
+var wynik = 0;
+var dzialanie=0;
 function wpiszNaEkran(liczba)
 {
 	liczbaNaEkranie.value += liczba;
 }
-function dodaj()
+function wybierzDzialanie(x)
 {
+	if(liczbaNaEkranie.value=="")
+    {
+    	dzialanie=x;
+    	return;
+    }
 	pierwszaLiczba=Number(liczbaNaEkranie.value);
-    liczbaNaEkranie.value="";
-    dzialanie=1;
-}
-function odejmij()
-{
-	pierwszaLiczba=Number(liczbaNaEkranie.value);
-    liczbaNaEkranie.value="";
-    dzialanie=2;
-}
-function mnozenie()
-{
-	pierwszaLiczba=Number(liczbaNaEkranie.value);
-    liczbaNaEkranie.value="";
-   	dzialanie=3;
-}
-function dzielenie()
-{
-	pierwszaLiczba=Number(liczbaNaEkranie.value);
-    liczbaNaEkranie.value="";
-   	dzialanie=4;
+    if(dzialanie==0)
+    {
+    	wynik=pierwszaLiczba;
+    }
+	else if(dzialanie==1)
+    {
+    	
+    	wynik=wynik+pierwszaLiczba;
+        dzialanie=1;
+    }
+    else if(dzialanie==2)
+    {
+    	wynik=wynik-pierwszaLiczba;
+        dzialanie=2;
+    }
+    else if(dzialanie==3)
+    {
+    	wynik=wynik*pierwszaLiczba;
+        dzialanie=3;
+    }
+    else if(dzialanie==4)
+    {
+    	wynik=wynik/pierwszaLiczba;
+        dzialanie=4;
+    }
+    liczbaNaEkranie.value = "";
+    dzialanie=x;
 }
 function wypiszWynik()
 {
-	drugaLiczba=Number(liczbaNaEkranie.value);
-    if(dzialanie==0)
+	if(dzialanie==1)
     {
-    liczbaNaEkranie.value="";
-    }
-    if(dzialanie==1)
-    {
-    var wynik = pierwszaLiczba+drugaLiczba;
-    liczbaNaEkranie.value=wynik;
+    	wynik=wynik+Number(liczbaNaEkranie.value);
     }
     if(dzialanie==2)
     {
-    var wynik = pierwszaLiczba-drugaLiczba;
-    liczbaNaEkranie.value=wynik;
+    	wynik=wynik-Number(liczbaNaEkranie.value);
     }
     if(dzialanie==3)
     {
-    var wynik = pierwszaLiczba*drugaLiczba;
-    liczbaNaEkranie.value=wynik;
+    	wynik=wynik*Number(liczbaNaEkranie.value);
     }
     if(dzialanie==4)
     {
-    var wynik = pierwszaLiczba/drugaLiczba;
-    liczbaNaEkranie.value=wynik;
+    	wynik=wynik/Number(liczbaNaEkranie.value);
     }
-    pierwszaLiczba=wynik;
+	liczbaNaEkranie.value = wynik;
+    dzialanie=0;
 }
 function wyczysc()
 {
-    liczbaNaEkranie.value="";
-    pierwszaLiczba=0;
-    drugaLiczba=0;
-    dzialanie=0;
+var pierwszaLiczba = 0;
+var wynik = 0;
+var dzialanie=0;
+liczbaNaEkranie.value = "";
 }
 </script>
 </html>
