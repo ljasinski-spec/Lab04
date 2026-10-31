@@ -7,6 +7,7 @@ body
 {
 display: flex;
 justify-content: center;
+background-color: lightgrey;
 }
 button
 {
@@ -24,14 +25,27 @@ display: flex;
 flex-wrap: wrap;
 width: 220px;
 gap: 5px;
+position: relative;
+left: 2px;
 }
 button
 {
+}
+input
+{
+width: 90%;
+margin-top: 20px;
+}
+.obudowa
+{
+display: block;
+background-color: grey;
 }
 </style>
 </head>
 
 <body>
+<div class="obudowa">
 <div class="container">
 <input type="text", id="ekran">
 
@@ -55,6 +69,7 @@ button
 <button onclick="wybierzDzialanie(4)">/</button>
 
 
+</div>
 </div>
 </div>
 </body>
@@ -126,10 +141,10 @@ function wypiszWynik()
 }
 function wyczysc()
 {
-var pierwszaLiczba = 0;
-var wynik = 0;
-var dzialanie=0;
-liczbaNaEkranie.value = "";
+    var pierwszaLiczba = 0;
+    var wynik = 0;
+    var dzialanie=0;
+    liczbaNaEkranie.value = "";
 }
 </script>
 </html>
