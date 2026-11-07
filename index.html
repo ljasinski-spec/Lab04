@@ -95,9 +95,14 @@ var liczbaNaEkranie = document.getElementById("ekran");
 var pierwszaLiczba = 0;
 var wynik = 0;
 var dzialanie=0;
+var nowaLiczba= false;
 function wpiszNaEkran(liczba)
 {
-	if(liczbaNaEkranie.value==0) liczbaNaEkranie.value = liczba;
+	if(liczbaNaEkranie.value==0||nowaLiczba)
+	{
+		nowaLiczba=false;
+		liczbaNaEkranie.value = liczba;
+	}
 	else liczbaNaEkranie.value += liczba;
 }
 function wybierzDzialanie(x)
@@ -133,7 +138,8 @@ function wybierzDzialanie(x)
     	wynik=wynik/pierwszaLiczba;
         dzialanie=4;
     }
-    liczbaNaEkranie.value = "";
+    liczbaNaEkranie.value = wynik;
+	nowaLiczba=true;
     dzialanie=x;
 }
 function wypiszWynik()
@@ -163,6 +169,7 @@ function wyczysc()
     wynik = 0;
     dzialanie=0;
     liczbaNaEkranie.value = "";
+	nowaLiczba=false;
 }
 </script>
 </html>
